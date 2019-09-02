@@ -9,6 +9,7 @@ def stats_text_en(text):
         for symbol in symbols:
             #replace返回新的字符串，因此必须要新的字符串
             element = element.replace(symbol,'')
+        #将非空字符添加到列表中
         if len(element) :
             words.append(element)
 
@@ -80,7 +81,7 @@ def stats_text_cn(text):
     if __name__ == '__main__':
         en_result = stats_text_en(en_text)
         cn_result = stats_text_cn(cn_text)
-        print('英文单词词频==>',en_result)
-        print('中文字符词频==>',cn_result)
+        print('英文单词词频==>\n',en_result)
+        print('中文字符词频==>\n',cn_result)
 
     
