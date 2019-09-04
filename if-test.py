@@ -1,4 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep  3 16:11:07 2019
 
+@author: tony
+"""
+import string
+symbols = '，。:「」,?.”、'
 
 text = '''
 愚公移⼭山
@@ -9,10 +17,8 @@ text = '''
 ⼤大家都異異⼝口同聲贊成，只有他的妻⼦子表示懷疑，並說:「你連開鑿⼀一個⼩小丘的⼒力力量量都沒有，怎
 可能剷平太⾏行行、王屋⼆二⼭山呢?況且，鑿出的⼟土⽯石⼜又丟到哪裏去呢?」
 ⼤大家都熱烈烈地說:「把⼟土⽯石丟進渤海海裏。」
-here is beijing.
 於是愚公就和兒孫，⼀一起開挖⼟土，把⼟土⽯石搬運到渤海海去。
 愚公的鄰居是個寡婦，有個兒⼦子⼋八歲也興致勃勃地⾛走來來幫忙。
-beijing is beutiful.
 寒來來暑往，他們要⼀一年年才能往返渤海海⼀一次。
 住在⿈黃河河畔的智叟，看⾒見見他們這樣⾟辛苦，取笑愚公說:「你不不是很愚蠢嗎?你已⼀一把年年紀
 了了，就是⽤用盡你的氣⼒力力，也不不能挖去⼭山的⼀一⻆角呢?」
@@ -31,26 +37,38 @@ Stretching over a wide expanse of land, the mountains blocked
 One day yugong gathered his family together and said,”Let’s do our
  best to level these two mountains. We shall open a road that leads
  to Yuzhou. What do you think?”
-All but his wife agreed with him.'
-中国abc法国cde你好
-'''
-
-text = text.split()
-#print(text)
+ '''
+ 
+for symbol in symbols:
+     text = text.replace(symbol,' ')
+l1 = text.split()
 en_text = []
-for i in text:
-    if len(i) > 0:
-        if (ord(i[0])  in range(97,123)) or (ord(i[0])  in range(65,91)):
+cn_text = []
+for i in l1:
+    if len(i) >0:
+        if i[0] in string.ascii_letters:
             en_text.append(i)
-print(en_text)
+        else:
+            cn_text.append(i)
+
+str_words = ''.join(cn_text)
+set_words = set(str_words)
+print(set_words)
+
+counter ={}
+#print(set_words)
+
+for ch in set_words:
+    counter[ch] = str_words.count(ch)
+
+print(counter)
+print(sorted(counter.items(),key = lambda x:x[1],reverse=True))
+    
+#print(cn_words)
+#print(type(cn_words))
 
 
-#s1=''.join(filter(lambda x: '\u4e00' <= x <= '\u9fff',s))
-#s2=''.join(filter(lambda x:ord(x)<255,s))
+#print(en_text)
+#print(cn_text)
 
-#print(s1)
-#print(s2)
-
-#if '\u4e00' <= character <= '\u9fff':
-
-        
+     
